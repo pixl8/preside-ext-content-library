@@ -28,6 +28,15 @@
 				<div class="widget-body">
 					<div class="widget-main padding-20">
 						#( args.alternativesTable ?: "" )#
+
+						<hr>
+
+						<div class="clearfix">
+							<a class="pull-right btn btn-success" href="#args.addAlternativeLink#">
+								<i class="fa fa-fw fa-plus"></i>
+								#translateResource( "preside-objects.content_library_content:add.alternative.button" )#
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
