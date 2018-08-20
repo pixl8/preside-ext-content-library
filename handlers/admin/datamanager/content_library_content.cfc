@@ -26,12 +26,13 @@ component {
 			, recordId     = prc.recordId       ?: ""
 			, value        = prc.record.content ?: ""
 		);
-		args.alternativesTable = adminDataViewsService.renderField(
-			  objectName   = "content_library_content"
-			, propertyName = "alternatives"
-			, recordId     = prc.recordId ?: ""
-		);
-
+		args.alternativesTable = objectDataTable( objectName="content_library_conditional_alternative", args={
+			  allowSearch         = false
+			, allowFilter         = false
+			, allowDataExport     = false
+			, compact             = true
+			, useMultiActions     = false
+		} );
 		args.addAlternativeLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="addRecord", queryString="content_library_content=#prc.recordId#" );
 
 		return renderView( view="/admin/datamanager/content_library_content/viewRecord", args=args );

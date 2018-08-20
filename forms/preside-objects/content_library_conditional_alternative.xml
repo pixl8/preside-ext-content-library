@@ -3,7 +3,7 @@
 	<tab id="default">
 		<fieldset id="default" sortorder="10">
 			<field binding="content_library_conditional_alternative.content_library_content" control="hidden" />
-			<field binding="content_library_conditional_alternative.condition" quickadd="true" quickedit="true" />
+			<field binding="content_library_conditional_alternative.condition" quickadd="true" quickedit="true" control="conditionPicker" ruleContext="webrequest" />
 			<field binding="content_library_conditional_alternative.content"   />
 		</fieldset>
 	</tab>
