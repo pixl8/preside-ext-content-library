@@ -32,7 +32,7 @@ component {
 			, recordId     = prc.recordId ?: ""
 		);
 
-		args.addAlternativeLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="addRecord", querySting="content_library_content=#prc.recordId#" );
+		args.addAlternativeLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="addRecord", queryString="content_library_content=#prc.recordId#" );
 
 		return renderView( view="/admin/datamanager/content_library_content/viewRecord", args=args );
 	}
