@@ -31,7 +31,7 @@ component {
 			, allowFilter         = false
 			, allowDataExport     = false
 			, compact             = true
-			, useMultiActions     = false
+			, useMultiActions     = true
 		} );
 		args.addAlternativeLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="addRecord", queryString="content_library_content=#prc.recordId#" );
 
