@@ -1,7 +1,45 @@
-component {
+component extends="preside.system.base.AdminHandler" {
 
 	property name="customizationService"  inject="dataManagerCustomizationService";
 	property name="adminDataViewsService" inject="adminDataViewsService";
+	property name="dao"                   inject="presidecms:object:content_library_conditional_alternative";
+
+// PUBLIC ACTIONS
+	public void function sortRecords( event, rc, prc ) {
+		if ( !hasCmsPermission( "contentLibrary.edit" ) ) {
+			event.adminAccessDenied();
+		}
+
+		event.initializeDatamanagerPage( objectName="content_library_conditional_alternative" );
+
+		var objectName        = rc.object = prc.objectName ?: "";
+		var objectTitle       = prc.objectTitle            ?: "";
+		var objectTitlePlural = prc.objectTitlePlural      ?: "";
+
+		prc.records = dao.selectData(
+			  selectFields = [ "id", "label", "sort_order" ]
+			, orderby      = "sort_order"
+			, filter       = { content_library_content=rc.content_library_content ?: "" }
+		);
+
+		event.addAdminBreadCrumb(
+			  title = translateResource( uri="cms:datamanager.sortRecords.breadcrumb.title" )
+			, link  = ""
+		);
+		prc.pageTitle = translateResource( uri="cms:datamanager.sortRecords.title", data=[ objectTitlePlural ] );
+		prc.pageIcon  = "sort-amount-asc";
+
+		event.include( "/js/admin/specific/datamanager/sortrecords/" );
+		event.setView( "/admin/datamanager/sortRecords" );
+	}
+
+// CUSTOMIZATIONS
+	private string function buildSortRecordsLink( event, rc, prc, args={} ) {
+		return event.buildAdminLink(
+			  linkto      = "datamanager.content_library_conditional_alternative.sortRecords"
+			, queryString = "object=content_library_conditional_alternative&" & ( args.queryString ?: "" )
+		);
+	}
 
 
 	private string function objectBreadcrumb() {
@@ -40,6 +78,13 @@ component {
 
 	private string function buildListingLink() {
 		var contentId = prc.record.content_library_content ?: ( rc.content_library_content ?: ( rc.contentId ?: "" ) );
+
+		if ( !Len( Trim( contentId ) ) ) {
+			if ( event.getCurrentAction() == "sortRecordsAction" ) {
+				var record = dao.selectData( id=ListFirst( rc.ordered ?: "" ) );
+				contentId = record.content_library_content ?: "";
+			}
+		}
 
 		return event.buildAdminLink( objectName="content_library_content", recordId=contentId );
 	}

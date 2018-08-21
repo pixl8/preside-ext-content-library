@@ -34,6 +34,7 @@ component {
 			, useMultiActions     = false
 		} );
 		args.addAlternativeLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="addRecord", queryString="content_library_content=#prc.recordId#" );
+		args.sortAlternativesLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="sortRecords", queryString="content_library_content=#prc.recordId#" );
 
 		return renderView( view="/admin/datamanager/content_library_content/viewRecord", args=args );
 	}

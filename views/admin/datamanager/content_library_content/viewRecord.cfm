@@ -23,19 +23,21 @@
 						<i class="fa fa-fw fa-map-signs"></i>
 						#translateResource( "preside-objects.content_library_content:field.alternatives.title" )#
 					</h4>
+					<div class="widget-toolbar">
+						<a href="#args.addAlternativeLink#" title="#HtmlEditFormat( translateResource( "preside-objects.content_library_content:add.alternative.button" ) )#">
+							<i class="fa fa-fw fa-plus"></i>
+						</a>
+						<a href="#args.sortAlternativesLink#" title="#HtmlEditFormat( translateResource( "preside-objects.content_library_content:sort.alternatives.button" ) )#">
+							<i class="fa fa-fw fa-sort-amount-asc"></i>
+						</a>
+					</div>
 				</div>
 
 				<div class="widget-body">
 					<div class="widget-main padding-20">
 						#( args.alternativesTable ?: "" )#
 
-						<hr>
-
 						<div class="clearfix">
-							<a class="pull-right btn btn-success" href="#args.addAlternativeLink#">
-								<i class="fa fa-fw fa-plus"></i>
-								#translateResource( "preside-objects.content_library_content:add.alternative.button" )#
-							</a>
 						</div>
 					</div>
 				</div>

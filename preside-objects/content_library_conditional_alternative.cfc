@@ -1,6 +1,9 @@
 /**
- * @datamanagerEnabled    true
- * @datamanagerGridFields label
+ * @datamanagerEnabled          true
+ * @datamanagerGridFields       label,sort_order
+ * @datamanagerDefaultSortOrder sort_order
+ * @datamanagerSortable         true
+ * @datamanagerSortField        sort_order
  */
 component  {
 	property name="content_library_content" relationship="many-to-one" relatedto="content_library_content" required=true uniqueindexes="content|1" ondelete="cascade" cloneable=true adminRenderer="none" batcheditable=false;
