@@ -1,8 +1,8 @@
 {
     "name":"PresideCMS Extension: Content Library",
     "type":"preside-extensions",
-    "version":"1.0.2",
-    "location":"https://github.com/pixl8/preside-ext-content-library/archive/v1.0.2.zip",
+    "version":"$VERSION_NUMBER",
+    "location":"$DOWNLOAD_URL",
     "author":"Pixl8 Interactive",
     "directory":"application/extensions",
     "homepage":"https://github.com/pixl8/preside-ext-content-library",
