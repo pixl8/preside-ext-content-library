@@ -122,4 +122,16 @@ component extends="preside.system.base.AdminHandler" {
 			args.extraFilters.append( { filter={ content_library_content=contentId } } );
 		}
 	}
+
+	public void function addRecordAction( event, rc, prc ) {
+		var contentId    = rc.content_library_content ?: "";
+		var addRecordUrl = event.buildAdminLink( linkTo="datamanager.addRecord", queryString="object=content_library_conditional_alternative&content_library_content=#contentId#" );
+
+		runEvent(
+			  event          = "admin.DataManager._addRecordAction"
+			, prePostExempt  = true
+			, private        = true
+			, eventArguments = { audit=true, addAnotherUrl=addRecordUrl, errorUrl=addRecordUrl }
+		);
+	}
 }
