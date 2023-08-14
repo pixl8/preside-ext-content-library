@@ -134,4 +134,34 @@ component extends="preside.system.base.AdminHandler" {
 			, eventArguments = { audit=true, addAnotherUrl=addRecordUrl, errorUrl=addRecordUrl }
 		);
 	}
+
+	private void function preAddRecordAction( event, rc, prc, args={} ) {
+		_validateAlternativeRichContent( argumentCollection=arguments );
+	}
+
+	private void function preEditRecordAction( event, rc, prc, args={} ) {
+		_validateAlternativeRichContent( argumentCollection=arguments );
+	}
+
+	private void function _validateAlternativeRichContent( event, rc, prc, args={} ) {
+		var formData      = args.formData                    ?: {};
+		var recordId      = formData.content_library_content ?: "";
+		var contentData   = formData.content                 ?: "";
+		var widgetPattern = "\{\{widget:contentLibraryContent:(.*?):widget\}\}";
+		var regexMatched  = ReFind( widgetPattern, contentData, 1, true );
+		    regexMatched  = regexMatched.match ?: [];
+
+		if ( Len( Trim( recordId ) ) && ArrayLen( regexMatched ) ) {
+			var contentItem = UrlDecode( ArrayLast( regexMatched ) );
+
+			if ( IsJSON( contentItem ) ) {
+				contentItem = DeserializeJSON( contentItem );
+				contentItem = contentItem.content_item ?: "";
+
+				if ( contentItem == recordId ) {
+					args.validationResult.addError( fieldName="content", message="preside-objects.content_library_content:field.content.selected.self.error" );
+				}
+			}
+		}
+	}
 }
