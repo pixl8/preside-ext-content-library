@@ -1,5 +1,5 @@
 component extends="preside.system.base.AdminHandler" {
-
+	property name="contentLibraryService" inject="contentLibraryService";
 	property name="customizationService"  inject="dataManagerCustomizationService";
 	property name="adminDataViewsService" inject="adminDataViewsService";
 	property name="dao"                   inject="presidecms:object:content_library_conditional_alternative";
@@ -147,21 +147,11 @@ component extends="preside.system.base.AdminHandler" {
 		var formData      = args.formData                    ?: {};
 		var recordId      = formData.content_library_content ?: "";
 		var contentData   = formData.content                 ?: "";
-		var widgetPattern = "\{\{widget:contentLibraryContent:(.*?):widget\}\}";
-		var regexMatched  = ReFind( widgetPattern, contentData, 1, true );
-		    regexMatched  = regexMatched.match ?: [];
 
-		if ( Len( Trim( recordId ) ) && ArrayLen( regexMatched ) ) {
-			var contentItem = UrlDecode( ArrayLast( regexMatched ) );
-
-			if ( IsJSON( contentItem ) ) {
-				contentItem = DeserializeJSON( contentItem );
-				contentItem = contentItem.content_item ?: "";
-
-				if ( contentItem == recordId ) {
-					args.validationResult.addError( fieldName="content", message="preside-objects.content_library_content:field.content.selected.self.error" );
-				}
-			}
-		}
+		contentLibraryService.validateRichContent(
+			  recordId         = recordId
+			, richContent      = contentData
+			, validationResult = args.validationResult
+		);
 	}
 }

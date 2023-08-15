@@ -1,5 +1,5 @@
 component {
-
+	property name="contentLibraryService" inject="contentLibraryService";
 	property name="adminDataViewsService" inject="adminDataViewsService";
 
 	private boolean function checkPermission( event, rc, prc, args={} ) {
@@ -40,24 +40,14 @@ component {
 	}
 
 	private void function preEditRecordAction( event, rc, prc, args={} ) {
-		var recordId      = args.recordId    ?: "";
-		var formData      = args.formData    ?: {};
-		var contentData   = formData.content ?: "";
-		var widgetPattern = "\{\{widget:contentLibraryContent:(.*?):widget\}\}";
-		var regexMatched  = ReFind( widgetPattern, contentData, 1, true );
-		    regexMatched  = regexMatched.match ?: [];
+		var recordId    = args.recordId    ?: "";
+		var formData    = args.formData    ?: {};
+		var contentData = formData.content ?: "";
 
-		if ( Len( Trim( recordId ) ) && ArrayLen( regexMatched ) ) {
-			var contentItem = UrlDecode( ArrayLast( regexMatched ) );
-
-			if ( IsJSON( contentItem ) ) {
-				contentItem = DeserializeJSON( contentItem );
-				contentItem = contentItem.content_item ?: "";
-
-				if ( contentItem == recordId ) {
-					args.validationResult.addError( fieldName="content", message="preside-objects.content_library_content:field.content.selected.self.error" );
-				}
-			}
-		}
+		contentLibraryService.validateRichContent(
+			  recordId         = recordId
+			, richContent      = contentData
+			, validationResult = args.validationResult
+		);
 	}
 }
