@@ -1,5 +1,5 @@
 component {
-
+	property name="contentLibraryService" inject="contentLibraryService";
 	property name="adminDataViewsService" inject="adminDataViewsService";
 
 	private boolean function checkPermission( event, rc, prc, args={} ) {
@@ -37,5 +37,17 @@ component {
 		args.sortAlternativesLink = event.buildAdminLink( objectName="content_library_conditional_alternative", operation="sortRecords", queryString="content_library_content=#prc.recordId#" );
 
 		return renderView( view="/admin/datamanager/content_library_content/viewRecord", args=args );
+	}
+
+	private void function preEditRecordAction( event, rc, prc, args={} ) {
+		var recordId    = args.recordId    ?: "";
+		var formData    = args.formData    ?: {};
+		var contentData = formData.content ?: "";
+
+		contentLibraryService.validateRichContent(
+			  recordId         = recordId
+			, richContent      = contentData
+			, validationResult = args.validationResult
+		);
 	}
 }
