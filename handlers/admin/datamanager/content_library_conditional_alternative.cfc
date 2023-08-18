@@ -1,5 +1,5 @@
 component extends="preside.system.base.AdminHandler" {
-
+	property name="contentLibraryService" inject="contentLibraryService";
 	property name="customizationService"  inject="dataManagerCustomizationService";
 	property name="adminDataViewsService" inject="adminDataViewsService";
 	property name="dao"                   inject="presidecms:object:content_library_conditional_alternative";
@@ -132,6 +132,26 @@ component extends="preside.system.base.AdminHandler" {
 			, prePostExempt  = true
 			, private        = true
 			, eventArguments = { audit=true, addAnotherUrl=addRecordUrl, errorUrl=addRecordUrl }
+		);
+	}
+
+	private void function preAddRecordAction( event, rc, prc, args={} ) {
+		_validateAlternativeRichContent( argumentCollection=arguments );
+	}
+
+	private void function preEditRecordAction( event, rc, prc, args={} ) {
+		_validateAlternativeRichContent( argumentCollection=arguments );
+	}
+
+	private void function _validateAlternativeRichContent( event, rc, prc, args={} ) {
+		var formData      = args.formData                    ?: {};
+		var recordId      = formData.content_library_content ?: "";
+		var contentData   = formData.content                 ?: "";
+
+		contentLibraryService.validateRichContent(
+			  recordId         = recordId
+			, richContent      = contentData
+			, validationResult = args.validationResult
 		);
 	}
 }
