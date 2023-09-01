@@ -104,7 +104,7 @@ component extends="preside.system.base.AdminHandler" {
 			, renderer     = "richeditor"
 		);
 
-		return renderView( view="/admin/datamanager/email_content_library_conditional_alternative/viewContent", args=args );
+		return renderView( view="/admin/datamanager/content_library_conditional_alternative/viewContent", args=args );
 	}
 
 	private string function getAdditionalQueryStringForBuildAjaxListingLink( event, rc, prc, args={} ) {

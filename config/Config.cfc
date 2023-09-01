@@ -3,6 +3,7 @@ component {
 	public void function configure( required struct config ) {
 		var settings = arguments.config.settings ?: {};
 
+		_setupFeatures( settings );
 		_setupSideBar( settings );
 		_setupPermissions( settings );
 	}
@@ -13,9 +14,13 @@ component {
 
 		if ( siteTreePos ) {
 			settings.adminSideBarItems.insertAt( siteTreePos+1, "contentLibrary" );
+			settings.adminSideBarItems.insertAt( siteTreePos+2, "emailContentLibrary" );
+
 		} else {
 			settings.adminSideBarItems.append( "contentLibrary" );
+			settings.adminSideBarItems.append( "emailContentLibrary" );
 		}
+
 	}
 
 	private void function _setupPermissions( required struct settings ) {
@@ -30,6 +35,10 @@ component {
 		settings.adminRoles.contenteditor.append( "contentLibrary.*" );
 		settings.adminRoles.contenteditor.append( "!contentLibrary.delete" );
 
+	}
+
+		private void function _setupFeatures( required struct settings ) {
+		settings.features.emailContentLibrary                 = { enabled=false , siteTemplates=[ "*" ], widgets=["email_content_library"] };
 	}
 
 }
