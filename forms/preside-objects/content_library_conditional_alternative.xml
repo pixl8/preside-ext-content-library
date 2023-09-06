@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form i18nBaseUri="preside-objects.content_library_conditional_alternative:">
+<form i18nBaseUri="preside-objects.content_library_conditional_alternative:"  feature="contentLibrary" >
 	<tab id="default">
 		<fieldset id="default" sortorder="10">
-			<field binding="content_library_conditional_alternative.content_library_content" control="hidden" />
-			<field binding="content_library_conditional_alternative.condition" quickadd="true" quickedit="true" control="conditionPicker" ruleContext="webrequest" />
-			<field binding="content_library_conditional_alternative.content"   />
+			<field binding="content_library_conditional_alternative.content_library_content" control="hidden" " sortorder="10" />
+			<field binding="content_library_conditional_alternative.condition" quickadd="true" quickedit="true" control="conditionPicker" ruleContext="webrequest" sortorder="20" />
+			<field binding="content_library_conditional_alternative.content" sortorder="30" />
 		</fieldset>
 	</tab>
 </form>
