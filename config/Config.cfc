@@ -54,7 +54,7 @@ component {
 
 	}
 
-		private void function _setupFeatures( required struct settings ) {
+	private void function _setupFeatures( required struct settings ) {
 		settings.features.emailContentLibrary                 = { enabled=true , siteTemplates=[ "*" ], widgets=["email_content_library"] };
 	}
 
