@@ -43,6 +43,36 @@ component {
 		);
 	}
 
+	public void function validateRichContent(
+		  required string recordId
+		, required string richContent
+		, required any    validationResult
+	) {
+		var widgetPattern = "\{\{widget:contentLibraryContent:(.*?):widget\}\}";
+		var regexMatched  = ReFind( widgetPattern, arguments.richContent, 1, true, "all" );
+
+		if ( Len( Trim( arguments.recordId ) ) && ArrayLen( regexMatched ) ) {
+			for ( var matched in regexMatched ) {
+				for ( var item in matched.match ?: [] ) {
+					var contentItem = UrlDecode( item );
+
+					if ( IsJSON( contentItem ) ) {
+						contentItem = DeserializeJSON( contentItem );
+						contentItem = contentItem.content_item ?: "";
+
+						if ( contentItem == arguments.recordId ) {
+							arguments.validationResult.addError(
+								  fieldName = "content"
+								, message   = "preside-objects.content_library_content:field.content.selected.self.error"
+							);
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+
 // private getters and setter
 	private any function _getRulesEngineConditionService() {
 		return _rulesEngineConditionService;
