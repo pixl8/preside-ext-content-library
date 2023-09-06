@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.7
+
+* [CONTENTLIB-3](https://projects.pixl8.london/browse/CONTENTLIB-3) - Content library item: do not render itself
+* [CONTENTLIB-4](https://projects.pixl8.london/browse/CONTENTLIB-4) - Upgrade twgit release version generator
+
 ## 1.0.6
 
 * Add German translations
