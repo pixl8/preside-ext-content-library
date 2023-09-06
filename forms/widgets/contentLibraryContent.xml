@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form i18nBaseUri="widgets.contentLibraryContent:"  categories="default">
+<form i18nBaseUri="widgets.contentLibraryContent:" categories="default">
 	<tab>
 		<fieldset>
 			<field name="content_item" control="objectPicker" object="content_library_content" quickadd="true" quickedit="true" />

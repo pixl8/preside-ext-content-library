@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form i18nBaseUri="preside-objects.content_library_content:"  feature="contentLibrary" >
+<form i18nBaseUri="preside-objects.content_library_content:">
 	<tab id="default">
 		<fieldset id="default" sortorder="10">
 			<field binding="content_library_content.label" sortorder="10" />
