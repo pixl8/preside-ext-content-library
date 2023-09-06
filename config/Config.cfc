@@ -28,7 +28,9 @@ component {
 
 	private void function _setupAdminItems( required struct settings ) {
 
-		if(structKeyExists(settings.adminMenuItems.emailCenter, "subMenuItems")){
+		settings.adminMenuItems = settings.adminMenuItems ?: {};
+
+		if(structKeyExists(settings.adminMenuItems,"emailCenter") && structKeyExists(settings.adminMenuItems.emailCenter, "subMenuItems")){
 			settings.adminMenuItems.emailCenter.subMenuItems.append("emailContentLibrary");
 
 			settings.adminMenuItems.emailContentLibrary = {
