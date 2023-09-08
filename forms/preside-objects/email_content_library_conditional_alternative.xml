@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form i18nBaseUri="preside-objects.content_library_conditional_alternative:"  feature="emailContentLibrary">
+	<tab id="default">
+		<fieldset id="default" sortorder="10">
+			<field binding="content_library_conditional_alternative.content_library_content" control="hidden" sortorder="10" />
+			<field binding="content_library_conditional_alternative.condition" quickadd="true" quickedit="true" control="conditionPicker" ruleContext="webrequest" sortorder="20" />
+			<field binding="content_library_conditional_alternative.content" widgetCategories="email" linkPickerCategory="email" toolbar="email" sortorder="30" />
+		</fieldset>
+	</tab>
+</form>
