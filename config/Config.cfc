@@ -30,14 +30,14 @@ component {
 
 		settings.adminMenuItems = settings.adminMenuItems ?: {};
 
-		if(structKeyExists(settings.adminMenuItems,"emailCenter") && structKeyExists(settings.adminMenuItems.emailCenter, "subMenuItems")){
-			settings.adminMenuItems.emailCenter.subMenuItems.append("emailContentLibrary");
+		if ( StructKeyExists( settings.adminMenuItems, "emailCenter" ) && StructKeyExists( settings.adminMenuItems.emailCenter, "subMenuItems" ) ) {
+			ArrayAppend( settings.adminMenuItems.emailCenter.subMenuItems, "emailContentLibrary" );
 
 			settings.adminMenuItems.emailContentLibrary = {
 				  feature       = "emailContentLibrary"
 				, permissionKey = "contentLibrary.navigate"
 				, buildLinkArgs = { objectName="email_content_library_content" }
-					, activeChecks = { datamanagerObject=[ "email_content_library_content", "email_content_library_conditional_alternative" ] }
+				, activeChecks = { datamanagerObject=[ "email_content_library_content", "email_content_library_conditional_alternative" ] }
 			}
 		}
 	}
