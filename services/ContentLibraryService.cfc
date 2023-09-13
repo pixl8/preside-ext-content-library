@@ -37,9 +37,36 @@ component {
 		return record.content ?: "";
 	}
 
+	public string function getEmailContent( required string itemId ) {
+		var conditionService        = _getRulesEngineConditionService();
+		var conditionalAlternatives = $getPresideObject( "email_content_library_conditional_alternative" ).selectData(
+			  filter       = { email_content_library_content = arguments.itemId }
+			, selectFields = [ "condition", "content" ]
+			, orderBy      = "sort_order"
+		);
+
+		for( var alternative in conditionalAlternatives ) {
+			if ( conditionService.evaluateCondition( alternative.condition, "webrequest" ) ) {
+				return alternative.content;
+			}
+		}
+
+		var record = $getPresideObject( "email_content_library_content" ).selectData(
+			  id = arguments.itemId
+			, selectFields = [ "content" ]
+		);
+		return record.content ?: "";
+	}
+
 	public boolean function contentHasAlternatives( required string itemId ) {
 		return $getPresideObject( "content_library_conditional_alternative" ).dataExists(
 			filter = { content_library_content = arguments.itemId }
+		);
+	}
+
+	public boolean function emailContentHasAlternatives( required string itemId ) {
+		return $getPresideObject( "email_content_library_conditional_alternative" ).dataExists(
+			filter = { email_content_library_content = arguments.itemId }
 		);
 	}
 
