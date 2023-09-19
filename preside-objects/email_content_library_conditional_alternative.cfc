@@ -7,7 +7,7 @@
  * @feature                     emailContentLibrary
  */
 component  {
-	property name="content_library_content" relationship="many-to-one" relatedto="content_library_content" required=true uniqueindexes="content|1" ondelete="cascade" cloneable=true adminRenderer="none" batcheditable=false;
+	property name="email_content_library_content" relationship="many-to-one" relatedto="email_content_library_content" required=true uniqueindexes="content|1" ondelete="cascade" cloneable=true adminRenderer="none" batcheditable=false;
 	property name="condition"               relationship="many-to-one" relatedto="rules_engine_condition"  required=true uniqueindexes="content|2"                    cloneable=true adminViewGroup="system" sortorder=0 batcheditable=false;
 
 	property name="content"    type="string"  dbtype="text" required=true  adminRenderer="none" batcheditable=false widgetCategories="email" linkPickerCategory="email" toolbar="email";
