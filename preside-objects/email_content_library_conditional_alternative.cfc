@@ -18,7 +18,7 @@ component  {
 	public numeric function getNextSortOrder( required struct data ) {
 		var max = this.selectData(
 			  selectFields = [ "max( sort_order ) as sort_order" ]
-			, filter={ content_library_content=data.content_library_content ?: "" }
+			, filter={ email_content_library_content=data.email_content_library_content ?: "" }
 		);
 
 		return Val( max.sort_order ) + 1;
