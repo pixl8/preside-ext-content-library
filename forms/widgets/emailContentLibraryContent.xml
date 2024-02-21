@@ -2,7 +2,7 @@
 <form i18nBaseUri="widgets.emailContentLibraryContent:" feature="emailContentLibrary" categories="email">
 	<tab>
 		<fieldset>
-			<field name="content_item" control="objectPicker" object="email_content_library_content" quickadd="true" quickedit="true" />
+			<field name="content_item" control="objectPicker" object="email_content_library_content" required="true" quickadd="true" quickedit="true" />
 		</fieldset>
 	</tab>
 </form>
