@@ -1,13 +1,17 @@
 # Changelog
 
+## v1.0.9
+
+* **CONTENTLIB-6** - Cannot add alternatives in the Email Content Library
+
 ## v1.0.8
 
-* [CONTENTLIB-2](https://projects.pixl8.london/browse/CONTENTLIB-2) - Setup a new content library just for email
+* **CONTENTLIB-2** - Setup a new content library just for email
 
 ## v1.0.7
 
-* [CONTENTLIB-3](https://projects.pixl8.london/browse/CONTENTLIB-3) - Content library item: do not render itself
-* [CONTENTLIB-4](https://projects.pixl8.london/browse/CONTENTLIB-4) - Upgrade twgit release version generator
+* **CONTENTLIB-3** - Content library item: do not render itself
+* **CONTENTLIB-4** - Upgrade twgit release version generator
 
 ## 1.0.6
 
