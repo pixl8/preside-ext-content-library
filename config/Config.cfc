@@ -45,7 +45,7 @@ component {
 	private void function _setupPermissions( required struct settings ) {
 		settings.adminPermissions = settings.adminPermissions ?: {};
 
-		settings.adminPermissions.contentLibrary = [ "navigate", "read", "add", "delete", "edit",  "viewversions", "publish", "saveDraft", "clone" ];
+		settings.adminPermissions.contentLibrary = [ "navigate", "read", "add", "delete", "edit",  "viewversions", "publish", "saveDraft", "clone", "usefilters", "managefilters" ];
 
 		settings.adminRoles.contentadmin  = settings.adminRoles.contentadmin  ?: [];
 		settings.adminRoles.contenteditor = settings.adminRoles.contenteditor ?: [];
