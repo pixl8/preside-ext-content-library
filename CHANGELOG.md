@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.10
+
+* **CONTENTLIB-7** - Admin do not have filter permission
+
 ## v1.0.9
 
 * **CONTENTLIB-6** - Cannot add alternatives in the Email Content Library
