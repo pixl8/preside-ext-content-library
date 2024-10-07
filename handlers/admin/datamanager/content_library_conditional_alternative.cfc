@@ -20,6 +20,7 @@ component extends="preside.system.base.AdminHandler" {
 			  selectFields = [ "id", "label", "sort_order" ]
 			, orderby      = "sort_order"
 			, filter       = { content_library_content=rc.content_library_content ?: "" }
+			, returnType   = "array"
 		);
 
 		event.addAdminBreadCrumb(
