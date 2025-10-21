@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.11
+
+* Apply translation manager CI action
+
 ## v1.0.10
 
 * **CONTENTLIB-7** - Admin do not have filter permission
