@@ -9,7 +9,7 @@ component {
 			return renderViewlet( event="widgets.emailContentLibraryContent._nonCacheable", args=args );
 		}
 
-		return renderContent( "richeditor", contentLibraryService.getEmailContent( item ) );
+		return renderContent( "richeditor", contentLibraryService.getEmailContent( item ), "email" );
 	}
 
 	private function placeholder( event, rc, prc, args={} ) {
@@ -26,6 +26,6 @@ component {
 	private function _nonCacheable( event, rc, prc, args={} ) {
 		var item = args.content_item ?: "";
 
-		return renderContent( "richeditor", contentLibraryService.getEmailContent( item ) );
+		return renderContent( "richeditor", contentLibraryService.getEmailContent( item ), "email" );
 	}
 }
