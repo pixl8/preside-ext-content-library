@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.12
+
+* Email - Two col widget in content library widget styling issue
+
 ## v1.0.11
 
 * Apply translation manager CI action
